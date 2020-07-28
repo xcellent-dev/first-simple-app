@@ -1,4 +1,4 @@
 <h1 [hidden]="!isVisible">{{ title }}</h1>
 <button (click)="onVisible()">Show/Hide</button>
 <br />
-<app-customers-list></app-customers-list>
+<app-customers-list [customers]="people"></app-customers-list>

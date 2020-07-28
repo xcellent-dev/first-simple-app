@@ -1,27 +1,27 @@
-<filter-textbox></filter-textbox>
+<filter-textbox (changed)="filter($event)"></filter-textbox>
 <br />
 <br />
 <table class="table table-hover">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>City</th>
-    <th>Order Total</th>
+    <th (click)="sort('name')">Name</th>
+    <th (click)="sort('city')">City</th>
+    <th (click)="sort('orderTotal')">Order Total</th>
   </tr>
   </thead>
   <tr *ngFor="let cust of filteredCustomers">
     <td>
       <a>
-          {{ cust.name }}
+          {{ cust.name | capitalize }}
       </a>
     </td>
     <td>{{ cust.city }}</td>
-    <td>{{ cust.orderTotal }}</td>
+    <td>{{ cust.orderTotal | currency:currencyCode:'symbol' }}</td>
   </tr>
   <tr *ngIf="filteredCustomers.length && filteredCustomers">
     <td colspan="2">&nbsp;</td>
     <td>
-        {{ customersOrderTotal }}
+        {{ customersOrderTotal | currency:currencyCode:'symbol' }}
     </td>
   </tr>
   <tr *ngIf="!filteredCustomers || !filteredCustomers.length">
